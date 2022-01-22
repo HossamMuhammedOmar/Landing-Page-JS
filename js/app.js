@@ -50,7 +50,7 @@ navbarList.appendChild(fragmentList);
 
 // Smooth scroll function
 function smoothScroll(link, target) {
-  link.addEventListener("click", function (e) {
+  link.addEventListener("click", (e) => {
     e.preventDefault();
     target.scrollIntoView({
       behavior: "smooth",
@@ -60,7 +60,7 @@ function smoothScroll(link, target) {
 }
 
 // Highlight Sections
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
   // iterate for each section to get the getBoundingClientRect() and know the current section
   for (const section of sections) {
     const topBounding = section.getBoundingClientRect().top;
@@ -81,9 +81,9 @@ window.addEventListener("scroll", function () {
 });
 
 // Responsive navbar menu
-navBarIcon.addEventListener("click", function () {
+navBarIcon.addEventListener("click", () => {
   navbarList.classList.toggle("active__menu");
-  document.querySelectorAll(".nav__toggle__line").forEach(function (line) {
+  document.querySelectorAll(".nav__toggle__line").forEach((line) => {
     line.classList.toggle("active");
   });
 });
