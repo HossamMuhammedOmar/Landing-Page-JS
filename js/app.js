@@ -14,7 +14,7 @@ const fragmentList = document.createDocumentFragment();
  **** 1 - Add the text to it (section name).
  **** 2 - Add css class to it.
  **** 3 - Add href value (section id).
- **** 4 - Make a smooth scroll to each section.
+ **** 4 - Make a smooth scroll to each section by call the smoothScroll function.
  * After that append link 'a' to the list item 'li'.
  * And then append these sections to a DocumentFragment,
  * Finally after the for loop, append sections to the navbarList element.
@@ -32,14 +32,8 @@ for (let section of sections) {
   // Add href to each link element
   link.href = `#${section.getAttribute("id")}`;
 
-  // Smooth scroll
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
-  });
+  // Smooth scroll function
+  smoothScroll(link, section);
 
   list.appendChild(link);
   fragmentList.appendChild(list);
@@ -47,3 +41,16 @@ for (let section of sections) {
 
 // Append fragment (that is contain the list items) to the navbarList
 navbarList.appendChild(fragmentList);
+
+// Helper functions
+
+// Smooth scroll function
+function smoothScroll(link, target) {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  });
+}
