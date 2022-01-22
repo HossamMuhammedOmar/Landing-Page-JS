@@ -10,7 +10,7 @@ const fragmentList = document.createDocumentFragment();
  * Define a variable to select all sections we have => it will return a (Node List),
  * And then Loop over them with the for of loop.
  * And then create 'li' for each section.
- * And then create a link 'a' for each list item, and do some steps with this links.
+ * And then create a link 'a' for each list item, and do some steps with these links.
  **** 1 - Add the text to it (section name).
  **** 2 - Add css class to it.
  **** 3 - Add href value (section id).
@@ -20,9 +20,10 @@ const fragmentList = document.createDocumentFragment();
  * Finally after the for loop, append sections to the navbarList element.
  */
 const sections = document.querySelectorAll("section");
-for (let section of sections) {
-  let list = document.createElement("li");
-  let link = document.createElement("a");
+
+for (const section of sections) {
+  const list = document.createElement("li");
+  const link = document.createElement("a");
   // Set link text
   link.text = section.dataset.nav;
 
@@ -54,3 +55,17 @@ function smoothScroll(link, target) {
     });
   });
 }
+
+// Highlight Sections
+window.addEventListener("scroll", function () {
+  // iterate for each section to get the getBoundingClientRect() and know the current section
+  for (const section of sections) {
+    const topBounding = section.getBoundingClientRect().top;
+    const minSpace = 0;
+    const maxSpace = 400;
+    // check if the section is in the view board or not, and add a highlight class if true
+    if (topBounding >= minSpace && topBounding <= maxSpace)
+      section.classList.add("your-active-class");
+    else section.classList.remove("your-active-class");
+  }
+});
