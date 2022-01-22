@@ -3,6 +3,9 @@
 // Select navbarList 'ul' element by id
 const navbarList = document.querySelector("#navbar__list");
 
+// Select Navbar Icon
+const navBarIcon = document.querySelector(".nav__toggle__button");
+
 // Create new DocumentFragment to use it in when we create a list of sections to decrease the reflow and rebuild which increase the app performance
 const fragmentList = document.createDocumentFragment();
 
@@ -75,4 +78,12 @@ window.addEventListener("scroll", function () {
       link.classList.remove("highlight__links");
     }
   }
+});
+
+// Responsive navbar menu
+navBarIcon.addEventListener("click", function () {
+  navbarList.classList.toggle("active__menu");
+  document.querySelectorAll(".nav__toggle__line").forEach(function (line) {
+    line.classList.toggle("active");
+  });
 });
