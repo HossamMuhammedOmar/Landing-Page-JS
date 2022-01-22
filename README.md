@@ -1,1 +1,1 @@
-# Landing-Page-JS
+# Dynamic Landing Page With JavaScript
