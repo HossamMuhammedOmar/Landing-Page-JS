@@ -75,6 +75,11 @@ section {
   display: inline-block;
 }
 
+/* Highlight links */
+.highlight__links {
+  background: #09d15c48;
+}
+
 .navbar__menu .menu__link {
   display: block;
   padding: 1em;

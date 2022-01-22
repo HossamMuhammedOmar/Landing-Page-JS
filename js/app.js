@@ -61,11 +61,18 @@ window.addEventListener("scroll", function () {
   // iterate for each section to get the getBoundingClientRect() and know the current section
   for (const section of sections) {
     const topBounding = section.getBoundingClientRect().top;
+    // get the link of the current section to make it highlighted also (by href value)
+    const link = document.querySelector(`[href="#${section.id}"]`);
+
     const minSpace = 0;
     const maxSpace = 400;
     // check if the section is in the view board or not, and add a highlight class if true
-    if (topBounding >= minSpace && topBounding <= maxSpace)
+    if (topBounding >= minSpace && topBounding <= maxSpace) {
       section.classList.add("your-active-class");
-    else section.classList.remove("your-active-class");
+      link.classList.add("highlight__links");
+    } else {
+      section.classList.remove("your-active-class");
+      link.classList.remove("highlight__links");
+    }
   }
 });
